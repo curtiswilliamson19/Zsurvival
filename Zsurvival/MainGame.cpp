@@ -1,30 +1,24 @@
 #define PLAY_IMPLEMENTATION
 #define PLAY_USING_GAMEOBJECT_MANAGER
 #include "Play.h"
+#include "MainGame.h"
+#include "Player.h"
 
 int DISPLAY_WIDTH = 1280;
 int DISPLAY_HEIGHT = 720;
 int DISPLAY_SCALE = 1;
 
-struct GameState
-{
-	float timer = 0;
-	int spriteId = 0;
-};
-
 GameState gameState;
 
-
-enum GameObjectType
-{
-	TYPE_NULL = -1,
-	TYPE_PLAYER,
-};
 
 // The entry point for a PlayBuffer program
 void MainGameEntry( PLAY_IGNORE_COMMAND_LINE )
 {
 	Play::CreateManager( DISPLAY_WIDTH, DISPLAY_HEIGHT, DISPLAY_SCALE );
+	Play::CentreAllSpriteOrigins();
+	Play::LoadBackground("Data\\Backgrounds\\background.jpg");
+
+	Play::CreateGameObject(TYPE_PLAYER, { DISPLAY_WIDTH / 2, DISPLAY_HEIGHT / 2 }, 50, "survivor");
 }
 
 // Called by PlayBuffer every frame (60 times a second!)
@@ -32,9 +26,17 @@ bool MainGameUpdate( float elapsedTime )
 {
 
 	gameState.timer += elapsedTime;
-	Play::ClearDrawingBuffer( Play::cOrange );
+	Play::DrawBackground();
 
-	Play::DrawDebugText( { DISPLAY_WIDTH / 2, DISPLAY_HEIGHT / 2 }, "Hello World!" );
+	/*Play::DrawDebugText({ 10, 10 },
+		Play::GetSpriteName(gameState.spriteId),
+		Play::cWhite);*/
+
+	//NEW
+	UpdatePlayer();
+
+	if (Play::KeyPressed(VK_SPACE))
+		gameState.spriteId++;
 
 	Play::PresentDrawingBuffer();
 	return Play::KeyDown( VK_ESCAPE );
@@ -46,4 +48,3 @@ int MainGameExit( void )
 	Play::DestroyManager();
 	return PLAY_OK;
 }
-

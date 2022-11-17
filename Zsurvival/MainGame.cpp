@@ -3,6 +3,7 @@
 #include "Play.h"
 #include "MainGame.h"
 #include "Player.h"
+#include "PlayerMovement.h"
 
 int DISPLAY_WIDTH = 1280;
 int DISPLAY_HEIGHT = 720;
@@ -34,6 +35,7 @@ bool MainGameUpdate( float elapsedTime )
 
 	//NEW
 	UpdatePlayer();
+	UpdatePlayerMovement('A', 'D', 'W', 'S');
 
 	if (Play::KeyPressed(VK_SPACE))
 		gameState.spriteId++;

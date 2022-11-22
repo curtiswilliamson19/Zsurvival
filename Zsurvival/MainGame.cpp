@@ -22,7 +22,7 @@ void MainGameEntry( PLAY_IGNORE_COMMAND_LINE )
 	Play::LoadBackground("Data\\Backgrounds\\background.jpg");
 
 	Play::CreateGameObject(TYPE_PLAYER, { DISPLAY_WIDTH / 2, DISPLAY_HEIGHT / 2 }, 50, "survivor");
-	Play::CreateGameObject(TYPE_ZOMBIE, { 60, 60 }, 50, "zombie");
+	
 }
 
 // Called by PlayBuffer every frame (60 times a second!)

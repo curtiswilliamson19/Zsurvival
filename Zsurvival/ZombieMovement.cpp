@@ -8,8 +8,7 @@ void UpdateZombieMovement()
 {
 	GameObject& obj_zombie = Play::GetGameObjectByType(TYPE_ZOMBIE);
 	GameObject& obj_player = Play::GetGameObjectByType(TYPE_PLAYER);
-	Play::PointGameObject(obj_zombie, 5, obj_player.pos.x, obj_player.pos.y);
+	Play::PointGameObject(obj_zombie, 2, obj_player.pos.x, obj_player.pos.y);
 
-	obj_zombie.velocity += obj_zombie.acceleration;
 	obj_zombie.pos += obj_zombie.velocity;
 }

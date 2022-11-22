@@ -10,7 +10,8 @@ struct GameState
 enum GameObjectType
 {
 	TYPE_NULL = -1,
-	TYPE_PLAYER
+	TYPE_PLAYER,
+	TYPE_ZOMBIE
 };
 
-void UpdatePlayer();
+//void UpdatePlayer();

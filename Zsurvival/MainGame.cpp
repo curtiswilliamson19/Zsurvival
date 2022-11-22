@@ -5,6 +5,7 @@
 #include "Player.h"
 #include "PlayerMovement.h"
 #include "Zombie.h"
+#include "ZombieMovement.h"
 
 int DISPLAY_WIDTH = 1280;
 int DISPLAY_HEIGHT = 720;
@@ -40,6 +41,7 @@ bool MainGameUpdate( float elapsedTime )
 	UpdatePlayerMovement('A', 'D', 'W', 'S');
 
 	UpdateZombie();
+	UpdateZombieMovement();
 
 	if (Play::KeyPressed(VK_SPACE))
 		gameState.spriteId++;

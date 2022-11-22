@@ -2,7 +2,7 @@
 #include "Play.h"
 #include "MainGame.h"
 
-constexpr float ZOMBIE_WALK_SPEED = 3.3f;
+constexpr float ZOMBIE_WALK_SPEED = 2.0f;
 
 void UpdateZombieMovement() 
 {
@@ -10,5 +10,6 @@ void UpdateZombieMovement()
 	GameObject& obj_player = Play::GetGameObjectByType(TYPE_PLAYER);
 	Play::PointGameObject(obj_zombie, 5, obj_player.pos.x, obj_player.pos.y);
 
-	Vector2D otc = obj_zombie.pos - obj_player.pos;
+	obj_zombie.velocity += obj_zombie.acceleration;
+	obj_zombie.pos += obj_zombie.velocity;
 }

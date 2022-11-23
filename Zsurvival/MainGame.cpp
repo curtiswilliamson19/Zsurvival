@@ -21,7 +21,7 @@ void MainGameEntry( PLAY_IGNORE_COMMAND_LINE )
 	Play::CentreAllSpriteOrigins();
 	Play::LoadBackground("Data\\Backgrounds\\background.jpg");
 
-	Play::CreateGameObject(TYPE_PLAYER, { DISPLAY_WIDTH / 2, DISPLAY_HEIGHT / 2 }, 50, "survivor_shoot_anim");
+	Play::CreateGameObject(TYPE_PLAYER, { DISPLAY_WIDTH / 2, DISPLAY_HEIGHT / 2 }, 50, "survivor");
 	
 }
 
@@ -40,8 +40,8 @@ bool MainGameUpdate( float elapsedTime )
 	UpdatePlayer();
 	UpdatePlayerMovement('A', 'D', 'W', 'S');
 
-	UpdateZombie();
-	UpdateZombieMovement();
+	//UpdateZombie();
+	//UpdateZombieMovement();
 
 	if (Play::KeyPressed(VK_SPACE))
 		gameState.spriteId++;

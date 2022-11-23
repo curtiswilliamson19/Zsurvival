@@ -2,6 +2,12 @@
 #include "Play.h"
 #include "MainGame.h"
 
+#include <chrono>
+#include <thread>
+
+using namespace std::this_thread; // sleep_for, sleep_until
+using namespace std::chrono; // nanoseconds, system_clock, seconds
+
 constexpr float PLAYER_WALK_SPEED = 3.5f;
 
 void UpdatePlayerMovement(char leftKey, char rightKey, char upKey, char downKey)
@@ -32,16 +38,11 @@ void UpdatePlayerMovement(char leftKey, char rightKey, char upKey, char downKey)
 		obj_player.pos.x += PLAYER_WALK_SPEED;
 	}
 
+	//not working as intended
 	if (Play::KeyPressed(VK_SPACE))
 	{
-		
-		obj_player.animSpeed = 0.2f;
-
-		if (Play::IsAnimationComplete(obj_player)) {
-			obj_player.animSpeed = 0.f;
-		}
-
+		bool shootAnimComplete = Play::IsAnimationComplete(obj_player);
+		Play::SetSprite(obj_player, "animation", 2.0f); 
 		Play::UpdateGameObject(obj_player);
-
 	}
 }

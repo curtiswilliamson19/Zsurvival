@@ -31,4 +31,17 @@ void UpdatePlayerMovement(char leftKey, char rightKey, char upKey, char downKey)
 	{
 		obj_player.pos.x += PLAYER_WALK_SPEED;
 	}
+
+	if (Play::KeyPressed(VK_SPACE))
+	{
+		
+		obj_player.animSpeed = 0.2f;
+
+		if (Play::IsAnimationComplete(obj_player)) {
+			obj_player.animSpeed = 0.f;
+		}
+
+		Play::UpdateGameObject(obj_player);
+
+	}
 }

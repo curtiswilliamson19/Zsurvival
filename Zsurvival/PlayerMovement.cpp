@@ -2,12 +2,6 @@
 #include "Play.h"
 #include "MainGame.h"
 
-#include <chrono>
-#include <thread>
-
-using namespace std::this_thread; // sleep_for, sleep_until
-using namespace std::chrono; // nanoseconds, system_clock, seconds
-
 constexpr float PLAYER_WALK_SPEED = 3.5f;
 
 void UpdatePlayerMovement(char leftKey, char rightKey, char upKey, char downKey)

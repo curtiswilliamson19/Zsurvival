@@ -41,8 +41,18 @@ void UpdatePlayerMovement(char leftKey, char rightKey, char upKey, char downKey)
 	//not working as intended
 	if (Play::KeyPressed(VK_SPACE))
 	{
+		
+		Play::SetSprite(obj_player, "animation", 1.0f); 
+
 		bool shootAnimComplete = Play::IsAnimationComplete(obj_player);
-		Play::SetSprite(obj_player, "animation", 2.0f); 
+		
+		if (shootAnimComplete)
+		{
+			Play::SetSprite(obj_player, "survivor", 0.0f);
+		}
+
 		Play::UpdateGameObject(obj_player);
+
 	}
+	
 }

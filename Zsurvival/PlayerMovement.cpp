@@ -42,17 +42,33 @@ void UpdatePlayerMovement(char leftKey, char rightKey, char upKey, char downKey)
 	if (Play::KeyPressed(VK_SPACE))
 	{
 		
-		Play::SetSprite(obj_player, "animation", 1.0f); 
-
-		bool shootAnimComplete = Play::IsAnimationComplete(obj_player);
-		
-		if (shootAnimComplete)
-		{
-			Play::SetSprite(obj_player, "survivor", 0.0f);
-		}
-
-		Play::UpdateGameObject(obj_player);
+		Play::SetSprite(obj_player, "animation", 0.0f); 
 
 	}
+
+	bool shootAnimComplete = Play::IsAnimationComplete(obj_player);
+
+	if (!shootAnimComplete)
+	{
+		obj_player.frame++;
+	}
+	else
+	{
+		Play::SetSprite(obj_player, "survivor", 0.0f);
+	}
 	
+
+
+	//Play::SetSprite(obj_player, "animation", 1.0f);
+
+	//bool shootAnimComplete = Play::IsAnimationComplete(obj_player);
+
+	////obj_player.animSpeed = 1.0f;
+
+	//if (shootAnimComplete)
+	//{
+	//	Play::SetSprite(obj_player, "survivor", 0.0f);
+	//}
+
+	//Play::UpdateGameObject(obj_player);
 }

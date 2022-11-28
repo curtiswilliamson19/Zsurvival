@@ -15,6 +15,7 @@ struct GameState
 	float timer = 0;
 	int spriteId = 0;
 	int score = 0;
+	int ammo = 10;
 	PlayState playState = STATE_START;
 };
 
@@ -24,7 +25,10 @@ enum GameObjectType
 {
 	TYPE_NULL = -1,
 	TYPE_PLAYER,
-	TYPE_ZOMBIE
+	TYPE_ZOMBIE,
+	TYPE_PROJECTILE,
+	TYPE_DEAD,
+	TYPE_GUN
 };
 
 extern int DISPLAY_WIDTH;

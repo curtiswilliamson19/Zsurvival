@@ -196,6 +196,7 @@
     </ClCompile>
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerMovement.cpp" />
+    <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="UpdateGamePlayState.cpp" />
     <ClCompile Include="Zombie.cpp" />
     <ClCompile Include="ZombieMovement.cpp" />
@@ -205,6 +206,7 @@
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerMovement.h" />
+    <ClInclude Include="Projectile.h" />
     <ClInclude Include="UpdateGamePlayState.h" />
     <ClInclude Include="Zombie.h" />
     <ClInclude Include="ZombieMovement.h" />

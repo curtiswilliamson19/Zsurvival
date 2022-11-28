@@ -1,6 +1,7 @@
 #define PLAY_USING_GAMEOBJECT_MANAGER
 #include "Play.h"
 #include "MainGame.h"
+#include "Projectile.h"
 
 constexpr float PLAYER_WALK_SPEED = 3.5f;
 
@@ -38,6 +39,21 @@ void UpdatePlayerMovement(char leftKey, char rightKey, char upKey, char downKey)
 		
 		Play::SetSprite(obj_player, "animation", 0.0f); 
 
+		if (gameState.ammo > 0) 
+		{
+			gameState.ammo--;
+
+			CreateProjectile();
+		}
+		else
+		{
+			if (gameState.ammo < 0)
+			{
+				gameState.ammo = 0;
+			}
+
+			Play::PlayAudio("tool");
+		}
 	}
 
 	bool shootAnimComplete = Play::IsAnimationComplete(obj_player);

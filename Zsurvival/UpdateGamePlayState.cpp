@@ -1,6 +1,7 @@
 #define PLAY_USING_GAMEOBJECT_MANAGER
 #include "Play.h"
 #include "MainGame.h"
+#include "Projectile.h"
 
 void UpdateGamePlayState()
 {
@@ -26,11 +27,14 @@ void UpdateGamePlayState()
 		break;
 
 	case STATE_PLAY:
-
+		Play::DrawFontText("64px", "SCORE " + std::to_string((int)gameState.score), { DISPLAY_WIDTH - 70, 20 }, Play::CENTRE);
+		Play::DrawFontText("64px", "AMMO " + std::to_string((int)gameState.ammo), { 55, 20 }, Play::CENTRE);
 		UpdatePlayer();
 		UpdatePlayerMovement('A', 'D', 'W', 'S');
 		UpdateZombie();
 		UpdateZombieMovement();
+		UpdateProjectile();
+		
 
 		if (Play::KeyPressed(VK_DELETE))
 		{

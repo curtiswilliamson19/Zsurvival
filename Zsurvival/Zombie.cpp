@@ -37,6 +37,10 @@ void UpdateZombie()
 
 	std::vector<int> vZombies = Play::CollectGameObjectIDsByType(TYPE_ZOMBIE);
 
+	bool hasCollided = false;
+
+	GameObject& obj_player = Play::GetGameObjectByType(TYPE_PLAYER);
+
 	for (int id : vZombies)
 	{
 		GameObject& obj_zombie = Play::GetGameObject(id);
@@ -52,6 +56,18 @@ void UpdateZombie()
 			obj_zombie.animSpeed = 0.0f;
 			Play::SetSprite(obj_zombie, "zombie", 0.0f);
 		}
+
+
+		
+		if (Play::IsColliding(obj_player, obj_zombie))
+		{
+			hasCollided = true;
+			
+			gameState.playState = STATE_DEAD;
+			Play::PlayAudio("error"); //TEST AUDIO
+		}
+
+
 		
 		Play::UpdateGameObject(obj_zombie);
 	}

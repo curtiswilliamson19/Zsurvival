@@ -10,13 +10,6 @@ void UpdateGamePlayState()
 	switch (gameState.playState)
 	{
 	case STATE_START:
-
-		//for (int id_obj : Play::CollectAllGameObjectIDs())
-			//Play::DestroyGameObject(id_obj);
-
-		//Play::DestroyGameObjectsByType(TYPE_ZOMBIE);
-		//Play::DestroyGameObjectsByType(TYPE_PLAYER);
-
 		gameState.playState = STATE_APPEAR;
 		return;
 	case STATE_APPEAR:
@@ -53,8 +46,9 @@ void UpdateGamePlayState()
 
 		if (Play::KeyPressed(VK_SPACE) == true)
 		{
-			gameState.playState = STATE_START;
+			gameState.playState = STATE_APPEAR;
 			gameState.score = 0;
+			gameState.ammo = 10;
 		}
 		break;
 

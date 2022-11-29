@@ -33,6 +33,28 @@ void UpdatePlayerMovement(char leftKey, char rightKey, char upKey, char downKey)
 		obj_player.pos.x += PLAYER_WALK_SPEED;
 	}
 
+	if (Play::KeyDown(upKey) || Play::KeyDown(downKey) || Play::KeyDown(leftKey) || Play::KeyDown(rightKey))
+	{
+		
+		Play::SetSprite(obj_player, "survivor_move", 0.0f);
+
+		obj_player.frame + 0.25;
+		
+		
+		//Play::UpdateGameObject(obj_player);
+	
+	}
+	else 
+	{
+		bool playerAnimComplete = Play::IsAnimationComplete(obj_player);
+
+		if (!playerAnimComplete)
+		{
+			obj_player.animSpeed = 0.0f;
+			Play::SetSprite(obj_player, "survivor", 0.0f);
+		}
+	}
+
 	//not working as intended
 	if (Play::KeyPressed(VK_SPACE))
 	{

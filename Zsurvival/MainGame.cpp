@@ -28,15 +28,16 @@ bool MainGameUpdate( float elapsedTime )
 {
 
 	gameState.timer += elapsedTime;
+
 	Play::DrawBackground();
 
-	//NEW
 	UpdateGamePlayState();
 
 	if (Play::KeyPressed(VK_SPACE))
 		gameState.spriteId++;
 
 	Play::PresentDrawingBuffer();
+
 	return Play::KeyDown( VK_ESCAPE );
 }
 

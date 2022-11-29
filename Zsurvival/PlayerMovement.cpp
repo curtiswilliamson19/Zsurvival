@@ -35,14 +35,9 @@ void UpdatePlayerMovement(char leftKey, char rightKey, char upKey, char downKey)
 
 	if (Play::KeyDown(upKey) || Play::KeyDown(downKey) || Play::KeyDown(leftKey) || Play::KeyDown(rightKey))
 	{
-		
 		Play::SetSprite(obj_player, "survivor_move", 0.0f);
 
 		obj_player.frame + 0.25;
-		
-		
-		//Play::UpdateGameObject(obj_player);
-	
 	}
 	else 
 	{
@@ -55,7 +50,6 @@ void UpdatePlayerMovement(char leftKey, char rightKey, char upKey, char downKey)
 		}
 	}
 
-	//not working as intended
 	if (Play::KeyPressed(VK_SPACE))
 	{
 		
@@ -73,7 +67,6 @@ void UpdatePlayerMovement(char leftKey, char rightKey, char upKey, char downKey)
 			{
 				gameState.ammo = 0;
 			}
-
 			Play::PlayAudio("tool");
 		}
 	}
@@ -89,18 +82,4 @@ void UpdatePlayerMovement(char leftKey, char rightKey, char upKey, char downKey)
 		Play::SetSprite(obj_player, "survivor", 0.0f);
 	}
 	
-
-
-	//Play::SetSprite(obj_player, "animation", 1.0f);
-
-	//bool shootAnimComplete = Play::IsAnimationComplete(obj_player);
-
-	////obj_player.animSpeed = 1.0f;
-
-	//if (shootAnimComplete)
-	//{
-	//	Play::SetSprite(obj_player, "survivor", 0.0f);
-	//}
-
-	//Play::UpdateGameObject(obj_player);
 }

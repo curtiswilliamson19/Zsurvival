@@ -47,17 +47,41 @@ void UpdateZombie()
 		obj_zombie.scale = 0.35f;
 		Play::DrawObjectRotated(obj_zombie);
 
-		Play::SetSprite(obj_zombie, "walk", 0.2f);
+		//Gets X and Y position of zombie and player
 
-		bool zombieAnimComplete = Play::IsAnimationComplete(obj_zombie);
+		Point2D playerPos = obj_player.pos;
+		Point2D zombiePos = obj_zombie.pos;
 
-		if (zombieAnimComplete)
+		float playerX = playerPos.x;
+		float playerY = playerPos.y;
+
+		float zombieX = zombiePos.x;
+		float zombieY = zombiePos.y;
+
+		//Gets difference in distance between X and Y
+		float diffX = playerX - zombieX;
+		float diffY = playerY - zombieY;
+
+		//Uses pythagoras theorem to work out the distance between the zombie and player
+
+		float distance = sqrt((diffX * diffX) + (diffY * diffY));
+
+		if (distance < 150)
 		{
-			obj_zombie.animSpeed = 0.0f;
-			Play::SetSprite(obj_zombie, "zombie", 0.0f);
+			Play::SetSprite(obj_zombie, "zombie_attack", 0.1f);
 		}
+		else if (distance > 150)
+		{
+			Play::SetSprite(obj_zombie, "walk", 0.2f);
 
+			bool zombieAnimComplete = Play::IsAnimationComplete(obj_zombie);
 
+			if (zombieAnimComplete)
+			{
+				obj_zombie.animSpeed = 0.0f;
+				Play::SetSprite(obj_zombie, "zombie", 0.0f);
+			}
+		}
 		
 		if (Play::IsColliding(obj_player, obj_zombie))
 		{
@@ -67,8 +91,6 @@ void UpdateZombie()
 			Play::PlayAudio("error"); //TEST AUDIO
 		}
 
-
-		
 		Play::UpdateGameObject(obj_zombie);
 	}
 	

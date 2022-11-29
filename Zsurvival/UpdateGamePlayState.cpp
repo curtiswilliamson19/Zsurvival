@@ -22,13 +22,13 @@ void UpdateGamePlayState()
 	case STATE_PLAY:
 		Play::DrawFontText("64px", "SCORE " + std::to_string((int)gameState.score), { DISPLAY_WIDTH - 70, 20 }, Play::CENTRE);
 		Play::DrawFontText("64px", "AMMO " + std::to_string((int)gameState.ammo), { 55, 20 }, Play::CENTRE);
+
 		UpdatePlayer();
 		UpdatePlayerMovement('A', 'D', 'W', 'S');
 		UpdateZombie();
 		UpdateZombieMovement();
 		UpdateProjectile();
 		
-
 		if (Play::KeyPressed(VK_DELETE))
 		{
 			gameState.playState = STATE_DEAD;
@@ -37,6 +37,7 @@ void UpdateGamePlayState()
 	case STATE_DEAD:
 		Play::DestroyGameObjectsByType(TYPE_ZOMBIE);
 		Play::DestroyGameObjectsByType(TYPE_PLAYER);
+
 		gameState.playState = STATE_WAIT;
 		break;
 	case STATE_WIN:

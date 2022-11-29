@@ -27,7 +27,6 @@ enum GameObjectType
 	TYPE_PLAYER,
 	TYPE_ZOMBIE,
 	TYPE_PROJECTILE,
-	TYPE_DEAD,
 	TYPE_GUN
 };
 

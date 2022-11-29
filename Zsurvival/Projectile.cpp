@@ -62,7 +62,7 @@ void UpdateProjectile()
 			if (Play::IsColliding(obj_projectile, obj_zombie))
 			{
 				hasCollided = true;
-				obj_zombie.type = TYPE_DEAD;
+				Play::DestroyGameObject(id_zombie);
 				Play::PlayAudio("error"); //TEST AUDIO
 				gameState.score += 100;
 			}

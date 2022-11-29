@@ -5,8 +5,6 @@ VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Zsurvival", "Zsurvival\Zsurvival.vcxproj", "{7BE91A0A-4D52-43EF-893F-7094624C95C6}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Level Editor", "Level Editor\Level Editor.vcxproj", "{1E4230DB-606E-4188-AB66-27BD6FDD0687}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -23,14 +21,6 @@ Global
 		{7BE91A0A-4D52-43EF-893F-7094624C95C6}.Release|x64.Build.0 = Release|x64
 		{7BE91A0A-4D52-43EF-893F-7094624C95C6}.Release|x86.ActiveCfg = Release|Win32
 		{7BE91A0A-4D52-43EF-893F-7094624C95C6}.Release|x86.Build.0 = Release|Win32
-		{1E4230DB-606E-4188-AB66-27BD6FDD0687}.Debug|x64.ActiveCfg = Debug|x64
-		{1E4230DB-606E-4188-AB66-27BD6FDD0687}.Debug|x64.Build.0 = Debug|x64
-		{1E4230DB-606E-4188-AB66-27BD6FDD0687}.Debug|x86.ActiveCfg = Debug|Win32
-		{1E4230DB-606E-4188-AB66-27BD6FDD0687}.Debug|x86.Build.0 = Debug|Win32
-		{1E4230DB-606E-4188-AB66-27BD6FDD0687}.Release|x64.ActiveCfg = Release|x64
-		{1E4230DB-606E-4188-AB66-27BD6FDD0687}.Release|x64.Build.0 = Release|x64
-		{1E4230DB-606E-4188-AB66-27BD6FDD0687}.Release|x86.ActiveCfg = Release|Win32
-		{1E4230DB-606E-4188-AB66-27BD6FDD0687}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -42,6 +42,18 @@ void UpdateZombie()
 		GameObject& obj_zombie = Play::GetGameObject(id);
 		obj_zombie.scale = 0.35f;
 		Play::DrawObjectRotated(obj_zombie);
-	}
 
+		Play::SetSprite(obj_zombie, "walk", 0.2f);
+
+		bool zombieAnimComplete = Play::IsAnimationComplete(obj_zombie);
+
+		if (zombieAnimComplete)
+		{
+			obj_zombie.animSpeed = 0.0f;
+			Play::SetSprite(obj_zombie, "zombie", 0.0f);
+		}
+		
+		Play::UpdateGameObject(obj_zombie);
+	}
+	
 }

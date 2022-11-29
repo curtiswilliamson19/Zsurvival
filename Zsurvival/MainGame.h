@@ -27,7 +27,8 @@ enum GameObjectType
 	TYPE_PLAYER,
 	TYPE_ZOMBIE,
 	TYPE_PROJECTILE,
-	TYPE_GUN
+	TYPE_GUN,
+	TYPE_AMMO
 };
 
 extern int DISPLAY_WIDTH;
@@ -41,3 +42,4 @@ void UpdatePlayer();
 void UpdatePlayerMovement(char leftKey, char rightKey, char upKey, char downKey);
 void UpdateZombie();
 void UpdateZombieMovement();
+void UpdateAmmo();

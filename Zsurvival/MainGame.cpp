@@ -7,6 +7,7 @@
 #include "Zombie.h"
 #include "ZombieMovement.h"
 #include "UpdateGamePlayState.h"
+#include "Ammo.h"
 
 int DISPLAY_WIDTH = 1280;
 int DISPLAY_HEIGHT = 720;

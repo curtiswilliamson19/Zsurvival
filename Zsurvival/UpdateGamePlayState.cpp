@@ -28,6 +28,7 @@ void UpdateGamePlayState()
 		UpdateZombie();
 		UpdateZombieMovement();
 		UpdateProjectile();
+		UpdateAmmo();
 		
 		if (Play::KeyPressed(VK_DELETE))
 		{
@@ -37,6 +38,7 @@ void UpdateGamePlayState()
 	case STATE_DEAD:
 		Play::DestroyGameObjectsByType(TYPE_ZOMBIE);
 		Play::DestroyGameObjectsByType(TYPE_PLAYER);
+		Play::DestroyGameObjectsByType(TYPE_AMMO);
 
 		gameState.playState = STATE_WAIT;
 		break;
@@ -44,6 +46,9 @@ void UpdateGamePlayState()
 		gameState.playState = STATE_WAIT;
 		break;
 	case STATE_WAIT:
+		Play::DrawFontText("64px", "GAME OVER", { DISPLAY_WIDTH / 2, 320 }, Play::CENTRE);
+		Play::DrawFontText("64px", "HIGH SCORE: " + std::to_string((int)gameState.score), { DISPLAY_WIDTH / 2, DISPLAY_HEIGHT / 2 }, Play::CENTRE);
+		Play::DrawFontText("64px", "PRESS SPACE BAR TO PLAY AGAIN", { DISPLAY_WIDTH / 2, 400}, Play::CENTRE);
 
 		if (Play::KeyPressed(VK_SPACE) == true)
 		{

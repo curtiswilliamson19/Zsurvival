@@ -50,7 +50,7 @@ void UpdatePlayerMovement(char leftKey, char rightKey, char upKey, char downKey)
 		}
 	}
 
-	if (Play::KeyPressed(VK_SPACE))
+	if (Play::KeyPressed(VK_LBUTTON))
 	{
 		
 		Play::SetSprite(obj_player, "animation", 0.0f); 

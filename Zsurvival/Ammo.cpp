@@ -22,9 +22,6 @@ void UpdateAmmo()
 		Play::CreateGameObject(TYPE_AMMO, spawnPoint, 50, "ammo");
 		
 	}
-	
-	//GameObject& obj_ammo = Play::GetGameObjectByType(TYPE_AMMO);
-	//Play::DrawObject(obj_ammo);
 
 	std::vector<int> vAmmo = Play::CollectGameObjectIDsByType(TYPE_AMMO);
 	GameObject& obj_player = Play::GetGameObjectByType(TYPE_PLAYER);

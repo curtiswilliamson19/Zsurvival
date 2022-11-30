@@ -58,7 +58,7 @@ void UpdateGamePlayState()
 		}
 		break;
 
-	} // End of switch
+	}
 
 	UpdatePlayer();
 

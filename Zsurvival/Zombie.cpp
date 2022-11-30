@@ -109,7 +109,6 @@ void UpdateZombie()
 			hasCollided = true;
 			
 			gameState.playState = STATE_DEAD;
-			//Play::PlayAudio("error"); //TEST AUDIO
 		}
 
 		Play::UpdateGameObject(obj_zombie);

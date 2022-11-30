@@ -60,6 +60,8 @@ void UpdatePlayerMovement(char leftKey, char rightKey, char upKey, char downKey)
 			gameState.ammo--;
 
 			CreateProjectile();
+
+			Play::PlayAudio("shoot");
 		}
 		else
 		{
@@ -67,7 +69,7 @@ void UpdatePlayerMovement(char leftKey, char rightKey, char upKey, char downKey)
 			{
 				gameState.ammo = 0;
 			}
-			Play::PlayAudio("tool");
+			Play::PlayAudio("click");
 		}
 	}
 

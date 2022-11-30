@@ -16,7 +16,7 @@ int DISPLAY_SCALE = 1;
 GameState gameState;
 
 
-// The entry point for a PlayBuffer program
+// Entry point
 void MainGameEntry( PLAY_IGNORE_COMMAND_LINE )
 {
 	Play::CreateManager( DISPLAY_WIDTH, DISPLAY_HEIGHT, DISPLAY_SCALE );
@@ -24,10 +24,9 @@ void MainGameEntry( PLAY_IGNORE_COMMAND_LINE )
 	Play::LoadBackground("Data\\Backgrounds\\background.jpg");
 }
 
-// Called by PlayBuffer every frame (60 times a second!)
+// Called every frame
 bool MainGameUpdate( float elapsedTime )
 {
-
 	gameState.timer += elapsedTime;
 
 	Play::DrawBackground();
@@ -42,7 +41,7 @@ bool MainGameUpdate( float elapsedTime )
 	return Play::KeyDown( VK_ESCAPE );
 }
 
-// Gets called once when the player quits the game 
+// Called once when the player quits
 int MainGameExit( void )
 {
 	Play::DestroyManager();

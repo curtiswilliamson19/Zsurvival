@@ -9,7 +9,7 @@
 
 void UpdateZombie()
 {
-	
+	//random roll for zombie spawn point
 	if (Play::RandomRoll(150) == 1)
 	{
 		int rand = Play::RandomRollRange(0, 3);
@@ -46,6 +46,27 @@ void UpdateZombie()
 		GameObject& obj_zombie = Play::GetGameObject(id);
 		obj_zombie.scale = 0.35f;
 		Play::DrawObjectRotated(obj_zombie);
+
+		//random roll for zombie audio
+		if (Play::RandomRoll(150) == 1)
+		{
+			int rand = Play::RandomRollRange(0, 2);
+
+			std::string audioString;
+
+			switch (rand)
+			{
+			case 0:
+				Play::PlayAudio("zombie1");
+				break;
+			case 1:
+				Play::PlayAudio("zombie2");
+				break;
+			case 2:
+				Play::PlayAudio("zombie3");
+				break;
+			}
+		}
 
 		//Gets X and Y position of zombie and player
 
@@ -88,7 +109,7 @@ void UpdateZombie()
 			hasCollided = true;
 			
 			gameState.playState = STATE_DEAD;
-			Play::PlayAudio("error"); //TEST AUDIO
+			//Play::PlayAudio("error"); //TEST AUDIO
 		}
 
 		Play::UpdateGameObject(obj_zombie);

@@ -63,7 +63,6 @@ void UpdateProjectile()
 			{
 				hasCollided = true;
 				Play::DestroyGameObject(id_zombie);
-				Play::PlayAudio("error"); //TEST AUDIO
 				gameState.score += 100;
 			}
 		}

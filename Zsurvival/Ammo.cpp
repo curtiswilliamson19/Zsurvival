@@ -36,7 +36,7 @@ void UpdateAmmo()
 		if (Play::IsColliding(obj_player, obj_ammo))
 		{
 			hasCollided = true;
-			gameState.ammo += 3;
+			player.increaseAmmo(3);
 			Play::PlayAudio("reload");
 			Play::DestroyGameObject(id);
 		}

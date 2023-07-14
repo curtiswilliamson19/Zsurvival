@@ -1,4 +1,11 @@
 #pragma once
+#include "Play.h"
+#include "Player.h"
+#include "PlayerMovement.h"
+#include "Zombie.h"
+#include "ZombieMovement.h"
+#include "UpdateGamePlayState.h"
+#include "Ammo.h"
 
 enum PlayState
 {
@@ -35,6 +42,7 @@ extern int DISPLAY_HEIGHT;
 extern int DISPLAY_SCALE;
 
 extern GameState gameState;
+extern Player player;
 
 void UpdateGamePlayState();
 void UpdatePlayer();

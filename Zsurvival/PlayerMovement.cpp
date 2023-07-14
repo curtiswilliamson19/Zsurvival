@@ -55,9 +55,9 @@ void UpdatePlayerMovement(char leftKey, char rightKey, char upKey, char downKey)
 		
 		Play::SetSprite(obj_player, "animation", 0.0f); 
 
-		if (gameState.ammo > 0) 
+		if (player.getAmmo() > 0)
 		{
-			gameState.ammo--;
+			player.decreaseAmmo(1);
 
 			CreateProjectile();
 
@@ -65,9 +65,9 @@ void UpdatePlayerMovement(char leftKey, char rightKey, char upKey, char downKey)
 		}
 		else
 		{
-			if (gameState.ammo < 0)
+			if (player.getAmmo() < 0)
 			{
-				gameState.ammo = 0;
+				player.setAmmo(0);
 			}
 			Play::PlayAudio("click");
 		}

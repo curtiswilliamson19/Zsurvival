@@ -55,6 +55,7 @@ void UpdateGamePlayState()
 			gameState.playState = STATE_APPEAR;
 			gameState.score = 0;
 			player.setAmmo(10);
+			gameState.vZombies.clear();
 		}
 		break;
 

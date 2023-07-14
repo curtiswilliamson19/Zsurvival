@@ -54,7 +54,7 @@ void UpdateGamePlayState()
 		{
 			gameState.playState = STATE_APPEAR;
 			gameState.score = 0;
-			gameState.ammo = 10;
+			player.setAmmo(10);
 		}
 		break;
 

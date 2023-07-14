@@ -200,6 +200,7 @@
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="UpdateGamePlayState.cpp" />
     <ClCompile Include="Zombie.cpp" />
+    <ClCompile Include="ZombieHealth.cpp" />
     <ClCompile Include="ZombieMovement.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -211,6 +212,7 @@
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="UpdateGamePlayState.h" />
     <ClInclude Include="Zombie.h" />
+    <ClInclude Include="ZombieHealth.h" />
     <ClInclude Include="ZombieMovement.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -101,7 +101,9 @@ void UpdateZombie()
 			break;
 		}
 
-		Play::CreateGameObject(TYPE_ZOMBIE, spawnPoint, 50, "zombie");
+		int id = Play::CreateGameObject(TYPE_ZOMBIE, spawnPoint, 50, "zombie");
+
+		gameState.vZombies.emplace_back(Zombie(id));
 	}
 
 	std::vector<int> vZombies = Play::CollectGameObjectIDsByType(TYPE_ZOMBIE);
@@ -184,12 +186,14 @@ void UpdateZombie()
 	}
 }
 
+//Removes zombie from vector and destorys object
 void RemoveZombieFromVector(int id)
 {
 	for (int i = 0; i < gameState.vZombies.size(); i++)
 	{
 		if (id == gameState.vZombies[i].getId())
 		{
+			Play::DestroyGameObject(id); //destroy zombie
 			gameState.vZombies.erase(gameState.vZombies.begin() + i);
 			i--;
 		}

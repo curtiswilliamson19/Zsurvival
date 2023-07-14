@@ -6,6 +6,7 @@
 #include "ZombieMovement.h"
 #include "UpdateGamePlayState.h"
 #include "Ammo.h"
+#include "ZombieHealth.h"
 
 enum PlayState
 {

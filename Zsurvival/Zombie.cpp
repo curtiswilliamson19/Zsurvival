@@ -7,6 +7,75 @@
 #define BOTTOM_LEFT Point2D{0,720}
 #define BOTTOM_RIGHT Point2D{1280,720}
 
+//Zombie class
+
+//constructors
+Zombie::Zombie()
+{
+	this->health = 100;
+	this->speed = 2.0f;
+	this->id = -1;
+}
+
+
+Zombie::Zombie(int id)
+{
+	this->health = 100;
+	this->speed = 2.0f;
+	this->id = id;
+}
+
+Zombie::Zombie(int health, float speed)
+{
+	this->health = health;
+	this->speed = speed;
+}
+
+//getters
+int Zombie::getHealth()
+{
+	return this->health;
+}
+
+float Zombie::getSpeed()
+{
+	return this->speed;
+}
+
+int Zombie::getId()
+{
+	return this->id;
+}
+
+//setters
+void Zombie::setHealth(int health)
+{
+	this->health = health;
+}
+
+void Zombie::setSpeed(float speed)
+{
+	this->speed = speed;
+}
+
+void Zombie::setId(int id)
+{
+	this->id = id;
+}
+
+//other
+void Zombie::increaseHealth(int health)
+{
+	this->health += health;
+}
+
+void Zombie::decreaseHealth(int health)
+{
+	this->health -= health;
+}
+
+
+//Zombie spawn, make sound, handle sprite
 void UpdateZombie()
 {
 	//random roll for zombie spawn point
@@ -103,15 +172,14 @@ void UpdateZombie()
 				Play::SetSprite(obj_zombie, "zombie", 0.0f);
 			}
 		}
-		
+
 		if (Play::IsColliding(obj_player, obj_zombie))
 		{
 			hasCollided = true;
-			
+
 			gameState.playState = STATE_DEAD;
 		}
 
 		Play::UpdateGameObject(obj_zombie);
 	}
-	
 }

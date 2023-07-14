@@ -21,7 +21,7 @@ void UpdateGamePlayState()
 
 	case STATE_PLAY:
 		Play::DrawFontText("64px", "SCORE " + std::to_string((int)gameState.score), { DISPLAY_WIDTH - 70, 20 }, Play::CENTRE);
-		Play::DrawFontText("64px", "AMMO " + std::to_string((int)gameState.ammo), { 55, 20 }, Play::CENTRE);
+		Play::DrawFontText("64px", "AMMO " + std::to_string((int)player.getAmmo()), {55, 20}, Play::CENTRE);
 
 		UpdatePlayer();
 		UpdatePlayerMovement('A', 'D', 'W', 'S');

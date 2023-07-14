@@ -3,8 +3,6 @@
 #include "MainGame.h"
 #include "Projectile.h"
 
-constexpr float PLAYER_WALK_SPEED = 3.5f;
-
 void UpdatePlayerMovement(char leftKey, char rightKey, char upKey, char downKey)
 {
 	GameObject& obj_player = Play::GetGameObjectByType(TYPE_PLAYER);
@@ -14,23 +12,23 @@ void UpdatePlayerMovement(char leftKey, char rightKey, char upKey, char downKey)
 
 	if (Play::KeyDown(upKey))
 	{
-		obj_player.pos.y -= PLAYER_WALK_SPEED;
+		obj_player.pos.y -= player.getSpeed();
 	}
 
 	if (Play::KeyDown(downKey))
 	{
-		obj_player.pos.y += PLAYER_WALK_SPEED;
+		obj_player.pos.y += player.getSpeed();
 	}
 
 
 	if (Play::KeyDown(leftKey))
 	{
-		obj_player.pos.x -= PLAYER_WALK_SPEED;
+		obj_player.pos.x -= player.getSpeed();
 	}
 
 	if (Play::KeyDown(rightKey))
 	{
-		obj_player.pos.x += PLAYER_WALK_SPEED;
+		obj_player.pos.x += player.getSpeed();
 	}
 
 	if (Play::KeyDown(upKey) || Play::KeyDown(downKey) || Play::KeyDown(leftKey) || Play::KeyDown(rightKey))

@@ -183,3 +183,15 @@ void UpdateZombie()
 		Play::UpdateGameObject(obj_zombie);
 	}
 }
+
+void RemoveZombieFromVector(int id)
+{
+	for (int i = 0; i < gameState.vZombies.size(); i++)
+	{
+		if (id == gameState.vZombies[i].getId())
+		{
+			gameState.vZombies.erase(gameState.vZombies.begin() + i);
+			i--;
+		}
+	}
+}

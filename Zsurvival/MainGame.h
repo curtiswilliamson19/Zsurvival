@@ -24,6 +24,7 @@ struct GameState
 	int score = 0;
 	int ammo = 10;
 	PlayState playState = STATE_START;
+	std::vector<Zombie> vZombies;
 };
 
 

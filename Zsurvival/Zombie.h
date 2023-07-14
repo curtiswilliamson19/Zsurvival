@@ -29,3 +29,4 @@ public:
 
 void UpdateZombie();
 
+void RemoveZombieFromVector(int id);

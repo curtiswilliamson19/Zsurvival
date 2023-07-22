@@ -10,6 +10,10 @@ void UpdatePlayerMovement(char leftKey, char rightKey, char upKey, char downKey)
 
 	Play::PointGameObject(obj_player, 5, CursorPos.x, CursorPos.y);
 
+	//Very basic movement, does not use acceleration & velocity
+	//PointGameObject uses the velocity of the object and interferes
+	//with this type of movement
+
 	if (Play::KeyDown(upKey))
 	{
 		obj_player.pos.y -= player.getSpeed();

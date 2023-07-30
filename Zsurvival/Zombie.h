@@ -7,11 +7,6 @@ private:
 	float speed;
 	int id = -1;
 public:
-	//constructors
-	Zombie();
-	Zombie(int id, int health);
-	Zombie(int health, float speed);
-
 	//enum
 	enum ZombieType
 	{
@@ -34,6 +29,11 @@ public:
 	void increaseHealth(int health);
 	void decreaseHealth(int health);
 	void setType(Zombie::ZombieType type);
+
+	//constructors
+	Zombie();
+	Zombie(int id, int health, Zombie::ZombieType type);
+
 //enum
 private:
 	Zombie::ZombieType zombieType;

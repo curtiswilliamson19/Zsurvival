@@ -92,26 +92,7 @@ void UpdateZombie()
 		obj_zombie.scale = 0.35f;
 		Play::DrawObjectRotated(obj_zombie);
 
-		//random roll for zombie audio
-		if (Play::RandomRoll(150) == 1)
-		{
-			int rand = Play::RandomRollRange(0, 2);
-
-			std::string audioString;
-
-			switch (rand)
-			{
-			case 0:
-				Play::PlayAudio("zombie1");
-				break;
-			case 1:
-				Play::PlayAudio("zombie2");
-				break;
-			case 2:
-				Play::PlayAudio("zombie3");
-				break;
-			}
-		}
+		MakeZombieSound();
 
 		//Gets X and Y position of zombie and player
 
@@ -203,5 +184,30 @@ void SpawnZombie()
 		int id = Play::CreateGameObject(TYPE_ZOMBIE, spawnPoint, 50, "zombie");
 
 		gameState.vZombies.emplace_back(Zombie(id));
+	}
+}
+
+//Make a random zombie sound
+void MakeZombieSound()
+{
+	//random roll for zombie audio
+	if (Play::RandomRoll(150) == 1)
+	{
+		int rand = Play::RandomRollRange(0, 2);
+
+		std::string audioString;
+
+		switch (rand)
+		{
+		case 0:
+			Play::PlayAudio("zombie1");
+			break;
+		case 1:
+			Play::PlayAudio("zombie2");
+			break;
+		case 2:
+			Play::PlayAudio("zombie3");
+			break;
+		}
 	}
 }

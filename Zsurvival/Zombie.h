@@ -32,3 +32,5 @@ void UpdateZombie();
 void RemoveZombieFromVector(int id);
 
 void SpawnZombie();
+
+void MakeZombieSound();

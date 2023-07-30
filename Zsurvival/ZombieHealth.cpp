@@ -15,6 +15,7 @@ void UpdateZombieHealth(int id)
 			if (gameState.vZombies[i].getHealth() <= 0)
 			{
 				RemoveZombieFromVector(id);
+				gameState.score += 100;
 			}
 		}
 	}

@@ -63,12 +63,9 @@ void UpdateProjectile()
 			{
 				hasCollided = true;
 				UpdateZombieHealth(id_zombie);
-				gameState.score += 100;
 			}
 		}
 		
-		if (gameState.score < 0)
-			gameState.score = 0;
 		Play::UpdateGameObject(obj_projectile);
 		Play::DrawObjectRotated(obj_projectile);
 		if (!Play::IsVisible(obj_projectile) || hasCollided)

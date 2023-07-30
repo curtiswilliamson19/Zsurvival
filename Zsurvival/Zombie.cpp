@@ -18,9 +18,9 @@ Zombie::Zombie()
 }
 
 
-Zombie::Zombie(int id)
+Zombie::Zombie(int id, int health)
 {
-	this->health = 100;
+	this->health = health;
 	this->speed = 2.0f;
 	this->id = id;
 }
@@ -183,7 +183,7 @@ void SpawnZombie()
 
 		int id = Play::CreateGameObject(TYPE_ZOMBIE, spawnPoint, 50, "zombie");
 
-		gameState.vZombies.emplace_back(Zombie(id));
+		gameState.vZombies.emplace_back(Zombie(id, 100));
 	}
 }
 

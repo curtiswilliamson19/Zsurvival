@@ -9,7 +9,7 @@ private:
 public:
 	//constructors
 	Zombie();
-	Zombie(int id);
+	Zombie(int id, int health);
 	Zombie(int health, float speed);
 
 	//getters

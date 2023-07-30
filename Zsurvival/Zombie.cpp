@@ -47,6 +47,11 @@ int Zombie::getId()
 	return this->id;
 }
 
+Zombie::ZombieType Zombie::getType()
+{
+	return this->zombieType;
+}
+
 //setters
 void Zombie::setHealth(int health)
 {
@@ -72,6 +77,11 @@ void Zombie::increaseHealth(int health)
 void Zombie::decreaseHealth(int health)
 {
 	this->health -= health;
+}
+
+void Zombie::setType(Zombie::ZombieType type)
+{
+	this->zombieType = type;
 }
 
 

@@ -12,10 +12,18 @@ public:
 	Zombie(int id, int health);
 	Zombie(int health, float speed);
 
+	//enum
+	enum ZombieType
+	{
+		STANDARD,
+		BIG
+	};
+
 	//getters
 	int getHealth();
 	float getSpeed();
 	int getId();
+	Zombie::ZombieType getType();
 
 	//setters
 	void setHealth(int health);
@@ -25,6 +33,10 @@ public:
 	//other
 	void increaseHealth(int health);
 	void decreaseHealth(int health);
+	void setType(Zombie::ZombieType type);
+//enum
+private:
+	Zombie::ZombieType zombieType;
 };
 
 void UpdateZombie();

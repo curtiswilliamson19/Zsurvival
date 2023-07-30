@@ -78,33 +78,7 @@ void Zombie::decreaseHealth(int health)
 //Zombie spawn, make sound, handle sprite
 void UpdateZombie()
 {
-	//random roll for zombie spawn point
-	if (Play::RandomRoll(150) == 1)
-	{
-		int rand = Play::RandomRollRange(0, 3);
-
-		Point2D spawnPoint;
-
-		switch (rand)
-		{
-		case 0:
-			spawnPoint = TOP_LEFT;
-			break;
-		case 1:
-			spawnPoint = TOP_RIGHT;
-			break;
-		case 2:
-			spawnPoint = BOTTOM_LEFT;
-			break;
-		case 3:
-			spawnPoint = BOTTOM_RIGHT;
-			break;
-		}
-
-		int id = Play::CreateGameObject(TYPE_ZOMBIE, spawnPoint, 50, "zombie");
-
-		gameState.vZombies.emplace_back(Zombie(id));
-	}
+	SpawnZombie();
 
 	std::vector<int> vZombies = Play::CollectGameObjectIDsByType(TYPE_ZOMBIE);
 
@@ -197,5 +171,37 @@ void RemoveZombieFromVector(int id)
 			gameState.vZombies.erase(gameState.vZombies.begin() + i);
 			i--;
 		}
+	}
+}
+
+//Spawn zombies
+void SpawnZombie()
+{
+	//random roll for zombie spawn point
+	if (Play::RandomRoll(150) == 1)
+	{
+		int rand = Play::RandomRollRange(0, 3);
+
+		Point2D spawnPoint;
+
+		switch (rand)
+		{
+		case 0:
+			spawnPoint = TOP_LEFT;
+			break;
+		case 1:
+			spawnPoint = TOP_RIGHT;
+			break;
+		case 2:
+			spawnPoint = BOTTOM_LEFT;
+			break;
+		case 3:
+			spawnPoint = BOTTOM_RIGHT;
+			break;
+		}
+
+		int id = Play::CreateGameObject(TYPE_ZOMBIE, spawnPoint, 50, "zombie");
+
+		gameState.vZombies.emplace_back(Zombie(id));
 	}
 }

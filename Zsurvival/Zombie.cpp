@@ -19,10 +19,10 @@ Zombie::Zombie()
 }
 
 
-Zombie::Zombie(int id, int health, Zombie::ZombieType type)
+Zombie::Zombie(int id, int health, float speed, Zombie::ZombieType type)
 {
 	this->health = health;
-	this->speed = 2.0f;
+	this->speed = speed;
 	this->id = id;
 	this->zombieType = type;
 }
@@ -229,12 +229,12 @@ void SpawnZombie()
 		if (Play::RandomRoll(3) == 1)
 		{
 			int id = Play::CreateGameObject(TYPE_ZOMBIE, spawnPoint, 50, "zombie_big");
-			gameState.vZombies.emplace_back(Zombie(id, 100, Zombie::BIG));
+			gameState.vZombies.emplace_back(Zombie(id, 100, 1.0f, Zombie::BIG));
 		}
 		else
 		{
 			int id = Play::CreateGameObject(TYPE_ZOMBIE, spawnPoint, 50, "zombie");
-			gameState.vZombies.emplace_back(Zombie(id, 50, Zombie::STANDARD));
+			gameState.vZombies.emplace_back(Zombie(id, 50, 2.0f, Zombie::STANDARD));
 
 		}
 	}

@@ -32,7 +32,7 @@ public:
 
 	//constructors
 	Zombie();
-	Zombie(int id, int health, Zombie::ZombieType type);
+	Zombie(int id, int health, float speed, Zombie::ZombieType type);
 
 //enum
 private:

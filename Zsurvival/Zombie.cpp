@@ -14,15 +14,17 @@ Zombie::Zombie()
 {
 	this->health = 100;
 	this->speed = 2.0f;
+	this->scale = 0.35f;
 	this->id = -1;
 	this->zombieType = STANDARD;
 }
 
 
-Zombie::Zombie(int id, int health, float speed, Zombie::ZombieType type)
+Zombie::Zombie(int id, int health, float speed, float scale, Zombie::ZombieType type)
 {
 	this->health = health;
 	this->speed = speed;
+	this->scale = scale;
 	this->id = id;
 	this->zombieType = type;
 }
@@ -36,6 +38,11 @@ int Zombie::getHealth()
 float Zombie::getSpeed()
 {
 	return this->speed;
+}
+
+float Zombie::getScale()
+{
+	return this->scale;
 }
 
 int Zombie::getId()
@@ -57,6 +64,11 @@ void Zombie::setHealth(int health)
 void Zombie::setSpeed(float speed)
 {
 	this->speed = speed;
+}
+
+void Zombie::setScale(float scale)
+{
+	this->scale = scale;
 }
 
 void Zombie::setId(int id)
@@ -99,13 +111,9 @@ void UpdateZombie()
 		//Zombie size based on type
 		for (int i = 0; i < gameState.vZombies.size(); i++)
 		{
-			if (id == gameState.vZombies[i].getId() && gameState.vZombies[i].getType() == Zombie::STANDARD)
+			if (id == gameState.vZombies[i].getId())
 			{
-				obj_zombie.scale = 0.35f;
-			}
-			else if(id == gameState.vZombies[i].getId() && gameState.vZombies[i].getType() == Zombie::BIG)
-			{
-				obj_zombie.scale = 0.50f;
+				obj_zombie.scale = gameState.vZombies[i].getScale();
 			}
 		}
 
@@ -229,12 +237,12 @@ void SpawnZombie()
 		if (Play::RandomRoll(3) == 1)
 		{
 			int id = Play::CreateGameObject(TYPE_ZOMBIE, spawnPoint, 50, "zombie_big");
-			gameState.vZombies.emplace_back(Zombie(id, 100, 1.0f, Zombie::BIG));
+			gameState.vZombies.emplace_back(Zombie(id, 100, 1.0f, 0.45f, Zombie::BIG));
 		}
 		else
 		{
 			int id = Play::CreateGameObject(TYPE_ZOMBIE, spawnPoint, 50, "zombie");
-			gameState.vZombies.emplace_back(Zombie(id, 50, 2.0f, Zombie::STANDARD));
+			gameState.vZombies.emplace_back(Zombie(id, 50, 2.0f, 0.35f, Zombie::STANDARD));
 
 		}
 	}

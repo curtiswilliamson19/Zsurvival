@@ -5,6 +5,7 @@ class Zombie
 private:
 	int health;
 	float speed;
+	float scale;
 	int id = -1;
 public:
 	//enum
@@ -17,12 +18,14 @@ public:
 	//getters
 	int getHealth();
 	float getSpeed();
+	float getScale();
 	int getId();
 	Zombie::ZombieType getType();
 
 	//setters
 	void setHealth(int health);
 	void setSpeed(float speed);
+	void setScale(float scale);
 	void setId(int id);
 
 	//other
@@ -32,7 +35,7 @@ public:
 
 	//constructors
 	Zombie();
-	Zombie(int id, int health, float speed, Zombie::ZombieType type);
+	Zombie(int id, int health, float speed, float scale, Zombie::ZombieType type);
 
 //enum
 private:

@@ -95,7 +95,20 @@ void UpdateZombie()
 	for (int id : vZombies)
 	{
 		GameObject& obj_zombie = Play::GetGameObject(id);
-		obj_zombie.scale = 0.35f;
+
+		//Zombie size based on type
+		for (int i = 0; i < gameState.vZombies.size(); i++)
+		{
+			if (id == gameState.vZombies[i].getId() && gameState.vZombies[i].getType() == Zombie::STANDARD)
+			{
+				obj_zombie.scale = 0.35f;
+			}
+			else if(id == gameState.vZombies[i].getId() && gameState.vZombies[i].getType() == Zombie::BIG)
+			{
+				obj_zombie.scale = 0.50f;
+			}
+		}
+
 		Play::DrawObjectRotated(obj_zombie);
 
 		MakeZombieSound();
@@ -119,22 +132,47 @@ void UpdateZombie()
 
 		float distance = sqrt((diffX * diffX) + (diffY * diffY));
 
-		if (distance < 150)
+		//loops through zombie vector, set sprites based on zombie type
+		for (int i = 0; i < gameState.vZombies.size(); i++)
 		{
-			Play::SetSprite(obj_zombie, "zombie_attack", 0.1f);
-		}
-		else if (distance > 150)
-		{
-			Play::SetSprite(obj_zombie, "walk", 0.2f);
-
-			bool zombieAnimComplete = Play::IsAnimationComplete(obj_zombie);
-
-			if (zombieAnimComplete)
+			if (id == gameState.vZombies[i].getId())
 			{
-				obj_zombie.animSpeed = 0.0f;
-				Play::SetSprite(obj_zombie, "zombie", 0.0f);
+				if (distance < 150 && gameState.vZombies[i].getType() == Zombie::STANDARD)
+				{
+					Play::SetSprite(obj_zombie, "zombie_attack", 0.1f);
+				}
+				else if (distance < 150 && gameState.vZombies[i].getType() == Zombie::BIG)
+				{
+					Play::SetSprite(obj_zombie, "zombie_big_attack", 0.1f);
+				}
+				else if (distance > 150 && gameState.vZombies[i].getType() == Zombie::STANDARD)
+				{
+					Play::SetSprite(obj_zombie, "walk", 0.2f);
+
+					bool zombieAnimComplete = Play::IsAnimationComplete(obj_zombie);
+
+					if (zombieAnimComplete)
+					{
+						obj_zombie.animSpeed = 0.0f;
+						Play::SetSprite(obj_zombie, "zombie", 0.0f);
+					}
+				}
+				else if (distance > 150 && gameState.vZombies[i].getType() == Zombie::BIG)
+				{
+					Play::SetSprite(obj_zombie, "walk_big", 0.2f);
+
+					bool zombieAnimComplete = Play::IsAnimationComplete(obj_zombie);
+
+					if (zombieAnimComplete)
+					{
+						obj_zombie.animSpeed = 0.0f;
+						Play::SetSprite(obj_zombie, "zombie_big", 0.0f);
+					}
+				}
 			}
 		}
+
+		
 
 		if (Play::IsColliding(obj_player, obj_zombie))
 		{
@@ -187,9 +225,18 @@ void SpawnZombie()
 			break;
 		}
 
-		int id = Play::CreateGameObject(TYPE_ZOMBIE, spawnPoint, 50, "zombie");
+		//1/3 chance of big zombie spawn
+		if (Play::RandomRoll(3) == 1)
+		{
+			int id = Play::CreateGameObject(TYPE_ZOMBIE, spawnPoint, 50, "zombie_big");
+			gameState.vZombies.emplace_back(Zombie(id, 100, Zombie::BIG));
+		}
+		else
+		{
+			int id = Play::CreateGameObject(TYPE_ZOMBIE, spawnPoint, 50, "zombie");
+			gameState.vZombies.emplace_back(Zombie(id, 50, Zombie::STANDARD));
 
-		gameState.vZombies.emplace_back(Zombie(id, 100, Zombie::STANDARD));
+		}
 	}
 }
 

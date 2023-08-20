@@ -61,7 +61,9 @@ void UpdatePlayerMovement(char leftKey, char rightKey, char upKey, char downKey)
 		{
 			player.decreaseAmmo(1);
 
-			CreateProjectile();
+			//CreateProjectile();
+
+			CreateProjectileBasic();
 
 			Play::PlayAudio("shoot");
 		}

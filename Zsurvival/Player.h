@@ -26,3 +26,4 @@ public:
 };
 
 void UpdatePlayer();
+void MovePlayerSpriteOrigin();

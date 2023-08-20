@@ -2,6 +2,7 @@
 #include "Play.h"
 #include "MainGame.h"
 
+//All of this can be replaced with a much more basic function, CreateProjectileBasic - This is a demonstration of creating a function to do this.
 void CreateProjectile()
 {
 	
@@ -49,6 +50,18 @@ void CreateProjectile()
 		break;
 
 	}
+}
+
+void CreateProjectileBasic()
+{
+
+	GameObject& obj_player = Play::GetGameObjectByType(TYPE_PLAYER);
+
+	Point2D cursorPos = Play::GetMousePos();
+
+	int id_bullet = Play::CreateGameObject(TYPE_PROJECTILE, obj_player.pos, 2, "bullet");
+
+	Play::PointGameObject(Play::GetGameObject(id_bullet), 5, cursorPos.x, cursorPos.y);
 }
 
 void UpdateProjectile()

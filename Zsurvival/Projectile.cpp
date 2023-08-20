@@ -61,7 +61,7 @@ void CreateProjectileBasic()
 
 	int id_bullet = Play::CreateGameObject(TYPE_PROJECTILE, obj_player.pos, 2, "bullet");
 
-	Play::PointGameObject(Play::GetGameObject(id_bullet), 5, cursorPos.x, cursorPos.y);
+	Play::PointGameObject(Play::GetGameObject(id_bullet), 20, cursorPos.x, cursorPos.y);
 }
 
 void UpdateProjectile()

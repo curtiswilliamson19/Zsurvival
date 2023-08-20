@@ -13,21 +13,27 @@ void CreateProjectile()
 
 	float ratioX, ratioY, bulletX, bulletY;
 
-	float hypotenuse = sqrt((abs(obj_player.pos.x - cursorPos.x) * abs(obj_player.pos.x - cursorPos.x)) + (abs(obj_player.pos.y - cursorPos.y) * abs(obj_player.pos.y - cursorPos.y)));
-	ratioY = abs(obj_player.pos.y - cursorPos.y) / hypotenuse;
-	ratioX = abs(obj_player.pos.x - cursorPos.x) / hypotenuse;
-
-	bulletX = ratioX * 20;
+	//the distance between two points in the X axis = Adjacent side of a triangle. 
+	//the distance between two points in the Y axis = Opposite side of a triangle.
+	
+	//the hypotenuse is the shortest distance between the two points
+	// 
+	//this hypotenuse is the distance between the 2 points 
+	float hypotenuse = sqrt((abs(obj_player.pos.x - cursorPos.x) * abs(obj_player.pos.x - cursorPos.x)) + (abs(obj_player.pos.y - cursorPos.y) * abs(obj_player.pos.y - cursorPos.y))); 
+	ratioY = abs(obj_player.pos.y - cursorPos.y) / hypotenuse; //opposite / hypotenuse - SOH
+	ratioX = abs(obj_player.pos.x - cursorPos.x) / hypotenuse; //adjacent / hypotenuse - CAH
+	//x = cos, y=sin
+	bulletX = ratioX * 20; //this essentially sets the speed of the bullet, 20 is speed
 	bulletY = ratioY * 20;
 
-	switch (abs(obj_player.pos.x) - abs(cursorPos.x) > 0) {
+	switch (abs(obj_player.pos.x) - abs(cursorPos.x) > 0) { 
 
 	case true:
-		Play::GetGameObject(id_bullet).velocity.x = 0 - bulletX;
+		Play::GetGameObject(id_bullet).velocity.x = 0 - bulletX; //move left
 		break;
 
 	case false:
-		Play::GetGameObject(id_bullet).velocity.x = bulletX;
+		Play::GetGameObject(id_bullet).velocity.x = bulletX; //move right
 		break;
 
 	}
@@ -35,11 +41,11 @@ void CreateProjectile()
 	switch (abs(obj_player.pos.y) - abs(cursorPos.y) > 0) {
 
 	case true:
-		Play::GetGameObject(id_bullet).velocity.y = 0 - bulletY;
+		Play::GetGameObject(id_bullet).velocity.y = 0 - bulletY; //move up
 		break;
 
 	case false:
-		Play::GetGameObject(id_bullet).velocity.y = bulletY;
+		Play::GetGameObject(id_bullet).velocity.y = bulletY; //move down
 		break;
 
 	}

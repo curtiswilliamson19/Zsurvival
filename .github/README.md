@@ -20,6 +20,7 @@ Zsurvival was developed using freely available sprites and audio files. The crea
 - rileygombart: Animated Top Down Zombie
 - NiceGraphic: Ammo Pack
 - donnie9171: Bullet
+- Betson: Blood
 
 **SOUND**
 - zer0_sol: Handgun Reload Sound Effect

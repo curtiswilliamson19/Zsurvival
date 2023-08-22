@@ -29,6 +29,7 @@ void UpdateGamePlayState()
 		UpdateZombie();
 		UpdateZombieMovement();
 		UpdateProjectile();
+		UpdateBlood();
 		UpdateAmmo();
 		
 		if (Play::KeyPressed(VK_DELETE))

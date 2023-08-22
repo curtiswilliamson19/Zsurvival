@@ -1,6 +1,7 @@
 #define PLAY_USING_GAMEOBJECT_MANAGER
 #include "Play.h"
 #include "MainGame.h"
+#include "Projectile.h"
 
 //All of this can be replaced with a much more basic function, CreateProjectileBasic - This is a demonstration of creating a function to do this.
 void CreateProjectile()
@@ -80,6 +81,9 @@ void UpdateProjectile()
 			GameObject& obj_zombie = Play::GetGameObject(id_zombie);
 			if (Play::IsColliding(obj_projectile, obj_zombie))
 			{
+				obj_projectile.velocity = { 0, 0 };
+				int bloodID = Play::CreateGameObject(TYPE_BLOOD, obj_projectile.pos, 0, "blood_6");
+				Play::SetSprite(Play::GetGameObject(bloodID), "blood_6", 0.5f);
 				hasCollided = true;
 				UpdateZombieHealth(id_zombie);
 			}

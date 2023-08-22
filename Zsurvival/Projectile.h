@@ -5,3 +5,5 @@ void CreateProjectile();
 void CreateProjectileBasic();
 
 void UpdateProjectile();
+
+void UpdateBlood();

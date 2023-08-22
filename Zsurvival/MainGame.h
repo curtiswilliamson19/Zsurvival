@@ -7,6 +7,7 @@
 #include "UpdateGamePlayState.h"
 #include "Ammo.h"
 #include "ZombieHealth.h"
+#include "Blood.h"
 
 enum PlayState
 {
@@ -36,7 +37,8 @@ enum GameObjectType
 	TYPE_PLAYER,
 	TYPE_ZOMBIE,
 	TYPE_PROJECTILE,
-	TYPE_AMMO
+	TYPE_AMMO,
+	TYPE_BLOOD
 };
 
 extern int DISPLAY_WIDTH;

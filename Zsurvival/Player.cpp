@@ -70,12 +70,3 @@ void UpdatePlayer()
 	obj_player.radius = 1.0f;
 	Play::DrawObjectRotated(obj_player);
 }
-
-//this moves the origin of the player sprite so that the bullet comes from the players gun
-//to the right and up
-void MovePlayerSpriteOrigin()
-{
-	Play::MoveSpriteOrigin("survivor", 55, -35);
-	Play::MoveSpriteOrigin("animation", 55, -35);
-	Play::MoveSpriteOrigin("survivor_move", 55, -35);
-}

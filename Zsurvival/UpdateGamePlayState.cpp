@@ -11,10 +11,10 @@ void UpdateGamePlayState()
 	{
 	case STATE_START:
 		gameState.playState = STATE_APPEAR;
+		MoveProjectileSpriteOrigin();
 		return;
 	case STATE_APPEAR:
 		Play::CreateGameObject(TYPE_PLAYER, { DISPLAY_WIDTH / 2, DISPLAY_HEIGHT / 2 }, 50, "survivor");
-		MovePlayerSpriteOrigin();
 		obj_player.pos = { DISPLAY_WIDTH / 2, DISPLAY_HEIGHT / 2 };
 		Play::SetSprite(obj_player, "survivor", 0);
 		gameState.playState = STATE_PLAY;

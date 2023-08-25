@@ -8,7 +8,7 @@ void UpdatePlayerMovement(char leftKey, char rightKey, char upKey, char downKey)
 	GameObject& obj_player = Play::GetGameObjectByType(TYPE_PLAYER);
 	Point2D CursorPos = Play::GetMousePos();
 
-	Play::PointGameObject(obj_player, 5, CursorPos.x, CursorPos.y);
+	Play::PointGameObject(obj_player, 0, CursorPos.x, CursorPos.y);
 
 	//Very basic movement, does not use acceleration & velocity
 	//PointGameObject uses the velocity of the object and interferes
@@ -37,15 +37,15 @@ void UpdatePlayerMovement(char leftKey, char rightKey, char upKey, char downKey)
 
 	if (Play::KeyDown(upKey) || Play::KeyDown(downKey) || Play::KeyDown(leftKey) || Play::KeyDown(rightKey))
 	{
-		Play::SetSprite(obj_player, "survivor_move", 0.0f);
+		Play::SetSprite(obj_player, "survivor_move", 0.0f); //this is partially the issue, 
 
-		obj_player.frame + 0.25;
+		//obj_player.frame + 0.25;
 	}
 	else 
 	{
 		bool playerAnimComplete = Play::IsAnimationComplete(obj_player);
 
-		if (!playerAnimComplete)
+		if (playerAnimComplete)
 		{
 			obj_player.animSpeed = 0.0f;
 			Play::SetSprite(obj_player, "survivor", 0.0f);
@@ -88,4 +88,5 @@ void UpdatePlayerMovement(char leftKey, char rightKey, char upKey, char downKey)
 		Play::SetSprite(obj_player, "survivor", 0.0f);
 	}
 	
+	Play::UpdateGameObject(obj_player);
 }

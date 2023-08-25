@@ -95,3 +95,10 @@ void UpdateProjectile()
 			Play::DestroyGameObject(id_projectile);
 	}
 }
+
+
+//this moves the origin of the bullet sprite so that the bullet comes from the players gun
+void MoveProjectileSpriteOrigin()
+{
+	Play::MoveSpriteOrigin("bullet", -20, 0);
+}

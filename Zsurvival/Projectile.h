@@ -7,3 +7,5 @@ void CreateProjectileBasic();
 void UpdateProjectile();
 
 void UpdateBlood();
+
+void MoveProjectileSpriteOrigin();

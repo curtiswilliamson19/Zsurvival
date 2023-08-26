@@ -10,6 +10,8 @@ void UpdatePlayerMovement(char leftKey, char rightKey, char upKey, char downKey)
 
 	Play::PointGameObject(obj_player, 0, CursorPos.x, CursorPos.y);
 
+	bool playerIsMoving = false;
+
 	//Very basic movement, does not use acceleration & velocity
 	//PointGameObject uses the velocity of the object and interferes
 	//with this type of movement
@@ -37,11 +39,18 @@ void UpdatePlayerMovement(char leftKey, char rightKey, char upKey, char downKey)
 
 	if (Play::KeyDown(upKey) || Play::KeyDown(downKey) || Play::KeyDown(leftKey) || Play::KeyDown(rightKey))
 	{
-		Play::SetSprite(obj_player, "survivor_move", 0.0f); //this is partially the issue, 
-
-		//obj_player.frame + 0.25;
+		playerIsMoving = true;
 	}
 	else 
+	{
+		playerIsMoving = false;
+	}
+
+	if (playerIsMoving)
+	{
+		Play::SetSprite(obj_player, "survivor_move", 0.2f); //this is partially the issue, 
+	}
+	else if (!playerIsMoving)
 	{
 		bool playerAnimComplete = Play::IsAnimationComplete(obj_player);
 
@@ -54,11 +63,11 @@ void UpdatePlayerMovement(char leftKey, char rightKey, char upKey, char downKey)
 
 	if (Play::KeyPressed(VK_LBUTTON))
 	{
-		
-		Play::SetSprite(obj_player, "animation", 0.0f); 
 
 		if (player.getAmmo() > 0)
 		{
+			Play::SetSprite(obj_player, "animation", 0.2f);
+
 			player.decreaseAmmo(1);
 
 			//CreateProjectile();
@@ -75,17 +84,14 @@ void UpdatePlayerMovement(char leftKey, char rightKey, char upKey, char downKey)
 			}
 			Play::PlayAudio("click");
 		}
-	}
 
-	bool shootAnimComplete = Play::IsAnimationComplete(obj_player);
+		bool shootAnimComplete = Play::IsAnimationComplete(obj_player);
 
-	if (!shootAnimComplete)
-	{
-		obj_player.frame++;
-	}
-	else
-	{
-		Play::SetSprite(obj_player, "survivor", 0.0f);
+		if (shootAnimComplete)
+		{
+			obj_player.animSpeed = 0.0f;
+			Play::SetSprite(obj_player, "survivor", 0.0f);
+		}
 	}
 	
 	Play::UpdateGameObject(obj_player);

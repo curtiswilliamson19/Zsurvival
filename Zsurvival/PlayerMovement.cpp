@@ -13,6 +13,7 @@ void UpdatePlayerMovement(char leftKey, char rightKey, char upKey, char downKey)
 	Play::PointGameObject(obj_player_legs, 0, CursorPos.x, CursorPos.y);
 
 	bool playerIsMoving = false;
+	bool playerShot = false;
 
 	//Very basic movement, does not use acceleration & velocity
 	//PointGameObject uses the velocity of the object and interferes
@@ -72,15 +73,7 @@ void UpdatePlayerMovement(char leftKey, char rightKey, char upKey, char downKey)
 		
 		if (player.getAmmo() > 0)
 		{
-			Play::SetSprite(obj_player, "animation", 0.2f); //problem?
-
-			player.decreaseAmmo(1);
-
-			//CreateProjectile();
-
-			CreateProjectileBasic();
-
-			Play::PlayAudio("shoot");
+			playerShot = true;
 		}
 		else
 		{
@@ -90,15 +83,31 @@ void UpdatePlayerMovement(char leftKey, char rightKey, char upKey, char downKey)
 			}
 			Play::PlayAudio("click");
 		}
-
-		bool shootAnimComplete = Play::IsAnimationComplete(obj_player);
-
-		if (shootAnimComplete)
-		{
-			obj_player.animSpeed = 0.0f;
-			Play::SetSprite(obj_player, "survivor", 0.0f);
-		}
 	}
+
+	if (playerShot)
+	{
+		Play::SetSprite(obj_player, "animation", 0.2f);
+
+		player.decreaseAmmo(1);
+
+		//CreateProjectile();
+
+		CreateProjectileBasic();
+
+		Play::PlayAudio("shoot");
+
+		playerShot = false;
+	}
+
+	bool shootAnimComplete = Play::IsAnimationComplete(obj_player);
+
+	if (shootAnimComplete)
+	{
+		obj_player.animSpeed = 0.0f;
+		Play::SetSprite(obj_player, "survivor", 0.0f);
+	}
+
 	Play::UpdateGameObject(obj_player_legs);
 	Play::UpdateGameObject(obj_player);
 }

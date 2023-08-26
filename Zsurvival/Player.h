@@ -26,3 +26,5 @@ public:
 };
 
 void UpdatePlayer();
+
+void MoveLegsSpriteOrigin();

@@ -65,8 +65,22 @@ void Player::decreaseAmmo(int ammo)
 //other
 void UpdatePlayer() 
 {
+	GameObject& obj_player_legs = Play::GetGameObjectByType(TYPE_PLAYER_LEGS);
 	GameObject& obj_player = Play::GetGameObjectByType(TYPE_PLAYER);
+
+	obj_player_legs.scale = 0.35f;
+	obj_player_legs.radius = 1.0f;
+	
 	obj_player.scale = 0.35f;
 	obj_player.radius = 1.0f;
+	
+	Play::DrawObjectRotated(obj_player_legs);
 	Play::DrawObjectRotated(obj_player);
+	
+}
+
+void MoveLegsSpriteOrigin()
+{
+	Play::MoveSpriteOrigin("survivor_idle", 0, 5);
+	Play::MoveSpriteOrigin("survivor_move", 0, 5);
 }

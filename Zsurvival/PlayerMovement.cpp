@@ -6,9 +6,11 @@
 void UpdatePlayerMovement(char leftKey, char rightKey, char upKey, char downKey)
 {
 	GameObject& obj_player = Play::GetGameObjectByType(TYPE_PLAYER);
+	GameObject& obj_player_legs = Play::GetGameObjectByType(TYPE_PLAYER_LEGS);
 	Point2D CursorPos = Play::GetMousePos();
 
 	Play::PointGameObject(obj_player, 0, CursorPos.x, CursorPos.y);
+	Play::PointGameObject(obj_player_legs, 0, CursorPos.x, CursorPos.y);
 
 	bool playerIsMoving = false;
 
@@ -19,36 +21,40 @@ void UpdatePlayerMovement(char leftKey, char rightKey, char upKey, char downKey)
 	if (Play::KeyDown(upKey))
 	{
 		obj_player.pos.y -= player.getSpeed();
+		obj_player_legs.pos.y -= player.getSpeed();
 	}
 
 	if (Play::KeyDown(downKey))
 	{
 		obj_player.pos.y += player.getSpeed();
+		obj_player_legs.pos.y += player.getSpeed();
 	}
 
 
 	if (Play::KeyDown(leftKey))
 	{
 		obj_player.pos.x -= player.getSpeed();
+		obj_player_legs.pos.x -= player.getSpeed();
 	}
 
 	if (Play::KeyDown(rightKey))
 	{
 		obj_player.pos.x += player.getSpeed();
+		obj_player_legs.pos.x += player.getSpeed();
 	}
 
 	if (Play::KeyDown(upKey) || Play::KeyDown(downKey) || Play::KeyDown(leftKey) || Play::KeyDown(rightKey))
 	{
 		playerIsMoving = true;
 	}
-	else 
+	else
 	{
 		playerIsMoving = false;
 	}
 
 	if (playerIsMoving)
 	{
-		Play::SetSprite(obj_player, "survivor_move", 0.2f); //this is partially the issue, 
+		Play::SetSprite(obj_player_legs, "survivor_move", 0.5f);
 	}
 	else if (!playerIsMoving)
 	{
@@ -57,16 +63,16 @@ void UpdatePlayerMovement(char leftKey, char rightKey, char upKey, char downKey)
 		if (playerAnimComplete)
 		{
 			obj_player.animSpeed = 0.0f;
-			Play::SetSprite(obj_player, "survivor", 0.0f);
+			Play::SetSprite(obj_player_legs, "survivor_idle", 0.0f);
 		}
 	}
 
 	if (Play::KeyPressed(VK_LBUTTON))
 	{
-
+		
 		if (player.getAmmo() > 0)
 		{
-			Play::SetSprite(obj_player, "animation", 0.2f);
+			Play::SetSprite(obj_player, "animation", 0.2f); //problem?
 
 			player.decreaseAmmo(1);
 
@@ -93,6 +99,6 @@ void UpdatePlayerMovement(char leftKey, char rightKey, char upKey, char downKey)
 			Play::SetSprite(obj_player, "survivor", 0.0f);
 		}
 	}
-	
+	Play::UpdateGameObject(obj_player_legs);
 	Play::UpdateGameObject(obj_player);
 }

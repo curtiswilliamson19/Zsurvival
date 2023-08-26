@@ -12,9 +12,11 @@ void UpdateGamePlayState()
 	case STATE_START:
 		gameState.playState = STATE_APPEAR;
 		MoveProjectileSpriteOrigin();
+		MoveLegsSpriteOrigin();
 		return;
 	case STATE_APPEAR:
 		Play::CreateGameObject(TYPE_PLAYER, { DISPLAY_WIDTH / 2, DISPLAY_HEIGHT / 2 }, 50, "survivor");
+		Play::CreateGameObject(TYPE_PLAYER_LEGS, { DISPLAY_WIDTH / 2, DISPLAY_HEIGHT / 2 }, 50, "survivor_idle");
 		obj_player.pos = { DISPLAY_WIDTH / 2, DISPLAY_HEIGHT / 2 };
 		Play::SetSprite(obj_player, "survivor", 0);
 		gameState.playState = STATE_PLAY;
@@ -40,6 +42,7 @@ void UpdateGamePlayState()
 	case STATE_DEAD:
 		Play::DestroyGameObjectsByType(TYPE_ZOMBIE);
 		Play::DestroyGameObjectsByType(TYPE_PLAYER);
+		Play::DestroyGameObjectsByType(TYPE_PLAYER_LEGS);
 		Play::DestroyGameObjectsByType(TYPE_AMMO);
 
 		gameState.playState = STATE_WAIT;

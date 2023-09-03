@@ -3,6 +3,8 @@
 #include "MainGame.h"
 #include "Player.h"
 
+//Player class
+
 //constructors
 Player::Player()
 {
@@ -76,9 +78,9 @@ void UpdatePlayer()
 	
 	Play::DrawObjectRotated(obj_player_legs);
 	Play::DrawObjectRotated(obj_player);
-	
 }
 
+//Moves where the player legs sprite is displayed
 void MoveLegsSpriteOrigin()
 {
 	Play::MoveSpriteOrigin("survivor_idle", 0, 5);

@@ -5,9 +5,9 @@
 constexpr float ZOMBIE_WALK_SPEED = 2.0f;
 constexpr float ZOMBIE_BIG_WALK_SPEED = 1.0f;
 
+//Handles zombie movement, follow player
 void UpdateZombieMovement() 
 {
-
 	GameObject& obj_player = Play::GetGameObjectByType(TYPE_PLAYER);
 
 	std::vector<int> vZombies = Play::CollectGameObjectIDsByType(TYPE_ZOMBIE);
@@ -25,5 +25,4 @@ void UpdateZombieMovement()
 		}
 		obj_zombie.pos += obj_zombie.velocity;
 	}
-	
 }

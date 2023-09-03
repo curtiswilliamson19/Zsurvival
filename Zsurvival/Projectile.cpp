@@ -53,6 +53,7 @@ void CreateProjectile()
 	}
 }
 
+//Basic version of projectile function using PlayBuffer
 void CreateProjectileBasic()
 {
 
@@ -65,6 +66,7 @@ void CreateProjectileBasic()
 	Play::PointGameObject(Play::GetGameObject(id_bullet), 20, cursorPos.x, cursorPos.y);
 }
 
+//Handles projectiles, collision with zombies, destruction of projectile
 void UpdateProjectile()
 {
 	std::vector<int> vProjectile = Play::CollectGameObjectIDsByType(TYPE_PROJECTILE);

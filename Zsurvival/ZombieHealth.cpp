@@ -1,6 +1,7 @@
 #include "ZombieHealth.h"
 #include "MainGame.h"
 
+//Handles zombie health, calls function that removes zombie from vector and destroys object if health <= 0
 void UpdateZombieHealth(int id)
 {
 	for (int i = 0; i < gameState.vZombies.size(); i++)

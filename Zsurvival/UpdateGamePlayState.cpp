@@ -3,6 +3,7 @@
 #include "MainGame.h"
 #include "Projectile.h"
 
+//Updates the state of the game, creates game loop
 void UpdateGamePlayState()
 {
 	GameObject& obj_player = Play::GetGameObjectByType(TYPE_PLAYER);
@@ -63,7 +64,6 @@ void UpdateGamePlayState()
 			gameState.vZombies.clear();
 		}
 		break;
-
 	}
 
 	UpdatePlayer();

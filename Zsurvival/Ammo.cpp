@@ -2,12 +2,7 @@
 #include "Play.h"
 #include "MainGame.h"
 
-#define MIDDLE Point2D{ DISPLAY_WIDTH / 2, DISPLAY_HEIGHT / 2 }
-#define TOP_LEFT Point2D{100,100}
-#define TOP_RIGHT Point2D{1000,100}
-#define BOTTOM_LEFT Point2D{100,500}
-#define BOTTOM_RIGHT Point2D{1000,500}
-
+//Randomly spawns ammo somewhere on screen, increases player ammo if collides with ammo box
 void UpdateAmmo()
 {
 
@@ -17,10 +12,8 @@ void UpdateAmmo()
 		int randY = Play::RandomRollRange(100, 500);
 
 		Point2D spawnPoint = {randX, randY};
-
 		
-		Play::CreateGameObject(TYPE_AMMO, spawnPoint, 50, "ammo");
-		
+		Play::CreateGameObject(TYPE_AMMO, spawnPoint, 50, "ammo");	
 	}
 
 	std::vector<int> vAmmo = Play::CollectGameObjectIDsByType(TYPE_AMMO);
@@ -31,7 +24,6 @@ void UpdateAmmo()
 	{
 		GameObject& obj_ammo = Play::GetGameObject(id);
 		Play::DrawObjectRotated(obj_ammo);
-		
 
 		if (Play::IsColliding(obj_player, obj_ammo))
 		{

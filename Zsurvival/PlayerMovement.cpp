@@ -3,6 +3,7 @@
 #include "MainGame.h"
 #include "Projectile.h"
 
+//Handles player movement, shooting, and the different sprites and animations that relate to this
 void UpdatePlayerMovement(char leftKey, char rightKey, char upKey, char downKey)
 {
 	GameObject& obj_player = Play::GetGameObjectByType(TYPE_PLAYER);
@@ -91,6 +92,7 @@ void UpdatePlayerMovement(char leftKey, char rightKey, char upKey, char downKey)
 
 		player.decreaseAmmo(1);
 
+		//This can be called to demonstrate working of more complex projectile function, ensure to comment out CreateProjectileBasic() if doing so
 		//CreateProjectile();
 
 		CreateProjectileBasic();

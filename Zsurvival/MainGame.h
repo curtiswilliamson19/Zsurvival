@@ -29,8 +29,6 @@ struct GameState
 	std::vector<Zombie> vZombies;
 };
 
-
-
 enum GameObjectType
 {
 	TYPE_NULL = -1,

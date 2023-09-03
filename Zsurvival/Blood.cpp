@@ -3,11 +3,10 @@
 #include "MainGame.h"
 #include "Blood.h"
 
+//Handles drawing, animation and destruction of blood
 void UpdateBlood()
 {
-
 	std::vector<int> vBlood = Play::CollectGameObjectIDsByType(TYPE_BLOOD);
-
 
 	for (int id : vBlood)
 	{
@@ -24,5 +23,4 @@ void UpdateBlood()
 			Play::DestroyGameObject(id);
 		}
 	}
-
 }

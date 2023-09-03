@@ -122,7 +122,6 @@ void UpdateZombie()
 		MakeZombieSound();
 
 		//Gets X and Y position of zombie and player
-
 		Point2D playerPos = obj_player.pos;
 		Point2D zombiePos = obj_zombie.pos;
 
@@ -179,8 +178,6 @@ void UpdateZombie()
 				}
 			}
 		}
-
-		
 
 		if (Play::IsColliding(obj_player, obj_zombie))
 		{
@@ -243,7 +240,6 @@ void SpawnZombie()
 		{
 			int id = Play::CreateGameObject(TYPE_ZOMBIE, spawnPoint, 50, "zombie");
 			gameState.vZombies.emplace_back(Zombie(id, 50, 2.0f, 0.35f, Zombie::STANDARD));
-
 		}
 	}
 }

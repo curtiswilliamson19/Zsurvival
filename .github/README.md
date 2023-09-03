@@ -3,10 +3,10 @@
 ## ZSurvival
 * **PLATFORM**: Windows
 * **LANGUAGE**: C++
-* **ENVIRONMENT**: Visual Studio
+* **ENVIRONMENT**: Visual Studio 2022
 
 ## Description
-ZSurvival is a top-down zombie survival game, the aim of which is to survive as long as possible. To survive, players must shoot the approaching zombies, pick up ammunition, and attempt to beat their high score! This game was developed using the C++ PlayBuffer library created by Sumo Digital Limited.
+ZSurvival is a top-down zombie survival game, the aim of which is to survive as long as possible. To survive, players must shoot the approaching zombies, pick up ammunition, and attempt to beat their high score! This game was developed using the C++ PlayBuffer library created by Sumo Digital Limited available at: https://github.com/sumo-digital-academy/playbuffer
 
 ## Control Scheme
 - Movement: WASD
@@ -21,6 +21,7 @@ Zsurvival was developed using freely available sprites and audio files. The crea
 - NiceGraphic: Ammo Pack
 - donnie9171: Bullet
 - Betson: Blood
+- Sumo Digital Academy: Font
 
 **SOUND**
 - zer0_sol: Handgun Reload Sound Effect

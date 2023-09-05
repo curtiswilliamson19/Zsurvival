@@ -28,3 +28,4 @@ Zsurvival was developed using freely available sprites and audio files. The crea
 - artisticdude: Zombies Sound Pack
 - Michel Baradari: Pistol
 - Michel Baradari: Metal weapon click
+- LiteSaturation https://pixabay.com/users/litesaturation-17654080 : Music

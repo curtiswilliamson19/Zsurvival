@@ -45,6 +45,7 @@ void UpdateGamePlayState()
 		Play::DestroyGameObjectsByType(TYPE_PLAYER);
 		Play::DestroyGameObjectsByType(TYPE_PLAYER_LEGS);
 		Play::DestroyGameObjectsByType(TYPE_AMMO);
+		Play::StopAudioLoop("music");
 
 		gameState.playState = STATE_WAIT;
 		break;
@@ -58,6 +59,7 @@ void UpdateGamePlayState()
 
 		if (Play::KeyPressed(VK_SPACE) == true)
 		{
+			Play::StartAudioLoop("music");
 			gameState.playState = STATE_APPEAR;
 			gameState.score = 0;
 			player.setAmmo(10);
